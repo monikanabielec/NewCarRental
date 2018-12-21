@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="480c2c3ec57a49fc9b69f0f494296b08" Name="Diagram1">
+        <EntityTypeShape EntityType="CarRentalModel.Cars" Width="1.5" PointX="3.125" PointY="3" />
+        <EntityTypeShape EntityType="CarRentalModel.CarType" Width="1.5" PointX="5.5" PointY="4.5" />
+        <EntityTypeShape EntityType="CarRentalModel.Reservations" Width="1.5" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="CarRentalModel.FK_Cars_CarType" />
+        <AssociationConnector Association="CarRentalModel.FK_Reservations_Cars" />
+        <EntityTypeShape EntityType="CarRentalModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="9.5" />
+        <EntityTypeShape EntityType="CarRentalModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="8" />
+        <EntityTypeShape EntityType="CarRentalModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="10.75" />
+        <EntityTypeShape EntityType="CarRentalModel.AspNetUsers" Width="1.5" PointX="3" PointY="8.375" />
+        <AssociationConnector Association="CarRentalModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CarRentalModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CarRentalModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="CarRentalModel.Customers" Width="1.5" PointX="5.375" PointY="1" />
+        <AssociationConnector Association="CarRentalModel.FK_Reservations_Customers" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
