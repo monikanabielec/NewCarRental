@@ -22,7 +22,7 @@ namespace NewCarRental.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("CarRentalEntities", throwIfV1Schema: false)
+            : base("AccountConnStr", throwIfV1Schema: false)
         {
         }
 
