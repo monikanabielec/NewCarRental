@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="480c2c3ec57a49fc9b69f0f494296b08" Name="Diagram1">
-        <EntityTypeShape EntityType="CarRentalModel.Cars" Width="1.5" PointX="3.125" PointY="3" />
+        <EntityTypeShape EntityType="CarRentalModel.Cars" Width="1.5" PointX="3.125" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="CarRentalModel.CarType" Width="1.5" PointX="5.5" PointY="4.5" />
         <EntityTypeShape EntityType="CarRentalModel.Reservations" Width="1.5" PointX="0.5" PointY="0.5" />
         <AssociationConnector Association="CarRentalModel.FK_Cars_CarType" />
@@ -19,6 +19,7 @@
         <AssociationConnector Association="CarRentalModel.AspNetUserRoles" />
         <EntityTypeShape EntityType="CarRentalModel.Customers" Width="1.5" PointX="5.375" PointY="1" />
         <AssociationConnector Association="CarRentalModel.FK_Reservations_Customers" />
+        <EntityTypeShape EntityType="CarRentalModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

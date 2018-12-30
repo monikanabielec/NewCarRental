@@ -57,7 +57,11 @@
         <dd>
             @Html.DisplayFor(model => model.CarType.Type)
         </dd>
-
+        <dd>
+            <div>
+                <img height="100" src="data:image/png;base64, @Model.Photo" />
+            </div>
+        </dd>
     </dl>
 </div>
 <p>

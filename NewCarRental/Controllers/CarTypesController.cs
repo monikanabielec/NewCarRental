@@ -10,6 +10,7 @@ using NewCarRental.Models.DAL;
 
 namespace NewCarRental.Controllers
 {
+    [Authorize]
     public class CarTypesController : Controller
     {
         private CarRentalEntities db = new CarRentalEntities();

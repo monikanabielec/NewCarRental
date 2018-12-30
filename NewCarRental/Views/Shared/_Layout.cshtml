@@ -19,8 +19,10 @@
             <p>&copy; @DateTime.Now.Year — Car Rental</p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/lib")
+       
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/custom")
 
     @RenderSection("scripts", required: false)
 </body>

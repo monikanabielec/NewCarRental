@@ -16,8 +16,17 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Registration", "Create", "Customers")</li>
-        <li>@Html.ActionLink("Log in", "Index", "Login")</li>
+
+        @if (NewCarRental.Helpers.UserHelper.User == null)
+        {
+            <li>@Html.ActionLink("Registration", "Create", "Customers")</li>
+            <li>@Html.ActionLink("Log in", "Index", "Login")</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink("Log off", "LogOff", "Login")</li>
+        }
+
         @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
         @*<li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
     </ul>

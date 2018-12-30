@@ -10,6 +10,7 @@ using NewCarRental.Models.DAL;
 
 namespace NewCarRental.Controllers
 {
+    [Authorize]
     public class CustomersController : Controller
     {
         private CarRentalEntities db = new CarRentalEntities();
@@ -35,15 +36,13 @@ namespace NewCarRental.Controllers
             return View(customers);
         }
 
-        // GET: Customers/Create
+        [AllowAnonymous]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Customers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,LastName,BirthDate,Login,Password")] Customers customers)

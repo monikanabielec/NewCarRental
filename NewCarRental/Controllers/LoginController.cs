@@ -33,5 +33,11 @@ namespace NewCarRental.Controllers
             }
             return View("Index");
         }
+     
+        public ActionResult LogOff()
+        {
+            UserHelper.User = null;         
+            return View("Index");
+        }
     }
 }

@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using NewCarRental.Helpers;
 using NewCarRental.Models.DAL;
 
 namespace NewCarRental.Controllers
 {
     public class CarsController : Controller
     {
-        private CarRentalEntities db = new CarRentalEntities();
-
+        private CarRentalEntities db = new CarRentalEntities();       
         // GET: Cars
         public ActionResult Index()
         {
@@ -33,6 +34,7 @@ namespace NewCarRental.Controllers
             {
                 return HttpNotFound();
             }
+            cars.Photo = StaticGlobalHelpers.ImageToString(cars.Photo);
             return View(cars);
         }
 
@@ -44,16 +46,24 @@ namespace NewCarRental.Controllers
         }
 
         // POST: Cars/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CarTypeId,Name,Brand,Model,ProductionYear,Stock")] Cars cars)
+        public ActionResult Create(Cars cars)
         {
             if (ModelState.IsValid)
             {
+                var file = Request.Files[0];
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/App_Data/Images/"), fileName);                    
+                    file.SaveAs(path);
+                    cars.Photo = path;
+                }
                 db.Cars.Add(cars);
                 db.SaveChanges();
+             
                 return RedirectToAction("Index");
             }
 
@@ -74,6 +84,7 @@ namespace NewCarRental.Controllers
                 return HttpNotFound();
             }
             ViewBag.CarTypeId = new SelectList(db.CarType, "Id", "Type", cars.CarTypeId);
+            cars.Photo = StaticGlobalHelpers.ImageToString(cars.Photo);
             return View(cars);
         }
 
@@ -86,8 +97,16 @@ namespace NewCarRental.Controllers
         {
             if (ModelState.IsValid)
             {
+                var file = Request.Files[0];
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/App_Data/Images/"), fileName);
+                    file.SaveAs(path);
+                    cars.Photo = path;
+                }
                 db.Entry(cars).State = EntityState.Modified;
-                db.SaveChanges();
+                db.SaveChanges();             
                 return RedirectToAction("Index");
             }
             ViewBag.CarTypeId = new SelectList(db.CarType, "Id", "Type", cars.CarTypeId);
@@ -128,5 +147,12 @@ namespace NewCarRental.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult UploadDocument()
+        {
+            return View();
+        }
     }
 }
+

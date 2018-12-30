@@ -67,6 +67,7 @@
           <Property Name="Model" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="ProductionYear" Type="int" Nullable="false" />
           <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="CarType">
           <Key>
@@ -95,6 +96,16 @@
           <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="DateFrom" Type="date" Nullable="false" />
           <Property Name="DateTo" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_Cars_CarType">
           <End Role="CarType" Type="Self.CarType" Multiplicity="1" />
@@ -198,6 +209,7 @@
           <EntitySet Name="CarType" EntityType="Self.CarType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reservations" EntityType="Self.Reservations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Cars_CarType" Association="Self.FK_Cars_CarType">
             <End Role="CarType" EntitySet="CarType" />
             <End Role="Cars" EntitySet="Cars" />
@@ -264,6 +276,7 @@
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Reservations" EntitySet="Reservations" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="CarRentalModel.sysdiagrams" />
         </EntityContainer>
         <EntityType Name="Cars">
           <Key>
@@ -278,6 +291,7 @@
           <Property Name="Stock" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CarType" Relationship="CarRentalModel.FK_Cars_CarType" FromRole="Cars" ToRole="CarType" />
           <NavigationProperty Name="Reservations" Relationship="CarRentalModel.FK_Reservations_Cars" FromRole="Cars" ToRole="Reservations" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CarType">
           <Key>
@@ -428,6 +442,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -437,6 +461,7 @@
           <EntitySetMapping Name="Cars">
             <EntityTypeMapping TypeName="CarRentalModel.Cars">
               <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Stock" ColumnName="Stock" />
                 <ScalarProperty Name="ProductionYear" ColumnName="ProductionYear" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
@@ -528,6 +553,17 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CarRentalModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
