@@ -12,12 +12,20 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
 
-                <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
                 <li>@Html.ActionLink("Cars", "Index", "Cars")</li>
                 <li>@Html.ActionLink("Reservations", "Index", "Reservations")</li>
-                <li>@Html.ActionLink("CarTypes", "Index", "CarTypes")</li>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
+                    <li>@Html.ActionLink("CarTypes", "Index", "CarTypes")</li>
+                }
+
             </ul>
             @Html.Partial("_LoginPartial")
+            
+          
+           
         </div>
     </div>
 </div>

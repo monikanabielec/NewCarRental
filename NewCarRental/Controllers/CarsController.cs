@@ -39,6 +39,7 @@ namespace NewCarRental.Controllers
         }
 
         // GET: Cars/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.CarTypeId = new SelectList(db.CarType, "Id", "Type");
@@ -46,7 +47,7 @@ namespace NewCarRental.Controllers
         }
 
         // POST: Cars/Create
-
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Cars cars)
@@ -70,7 +71,7 @@ namespace NewCarRental.Controllers
             ViewBag.CarTypeId = new SelectList(db.CarType, "Id", "Type", cars.CarTypeId);
             return View(cars);
         }
-
+        [Authorize]
         // GET: Cars/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -89,8 +90,7 @@ namespace NewCarRental.Controllers
         }
 
         // POST: Cars/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,CarTypeId,Name,Brand,Model,ProductionYear,Stock")] Cars cars)
@@ -114,6 +114,7 @@ namespace NewCarRental.Controllers
         }
 
         // GET: Cars/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -129,6 +130,7 @@ namespace NewCarRental.Controllers
         }
 
         // POST: Cars/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

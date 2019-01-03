@@ -11,7 +11,8 @@ namespace NewCarRental.Models.DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Customers
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,6 +24,8 @@ namespace NewCarRental.Models.DAL
         public int Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public System.DateTime BirthDate { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }

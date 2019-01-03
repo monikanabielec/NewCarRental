@@ -10,7 +10,7 @@ using NewCarRental.Helpers;
 using NewCarRental.Models.DAL;
 
 namespace NewCarRental.Controllers
-{
+{   
     public class ReservationsController : Controller
     {
         private CarRentalEntities db = new CarRentalEntities();
@@ -21,7 +21,7 @@ namespace NewCarRental.Controllers
             var reservations = db.Reservations.Include(r => r.Cars).Include(r => r.Customers);
             return View(reservations.ToList());
         }
-
+      
         // GET: Reservations/Details/5
         public ActionResult Details(int? id)
         {
@@ -38,6 +38,7 @@ namespace NewCarRental.Controllers
         }
 
         // GET: Reservations/Create
+
         public ActionResult Create()
         {
             ViewBag.CarId = new SelectList(db.Cars, "Id", "Name");
@@ -46,8 +47,8 @@ namespace NewCarRental.Controllers
         }
 
         // POST: Reservations/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+       
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,CarId,CustomerId,DateFrom,DateTo")] Reservations reservations)
@@ -97,8 +98,7 @@ namespace NewCarRental.Controllers
         }
 
         // POST: Reservations/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+   
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,CarId,CustomerId,DateFrom,DateTo")] Reservations reservations)

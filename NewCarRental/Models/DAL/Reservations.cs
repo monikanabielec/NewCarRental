@@ -11,13 +11,24 @@ namespace NewCarRental.Models.DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Reservations
     {
         public int Id { get; set; }
+       
         public int CarId { get; set; }
+
+        [Display(Name = "Customer Name")]
         public int CustomerId { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [Display(Name = "Start Date")]
         public System.DateTime DateFrom { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [Display(Name = "End Date")]
         public System.DateTime DateTo { get; set; }
     
         public virtual Cars Cars { get; set; }
