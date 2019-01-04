@@ -23,7 +23,9 @@ namespace NewCarRental.Models.DAL
     
         public int Id { get; set; }
         public string Name { get; set; }
+        [Display(Name = "Surname")]
         public string LastName { get; set; }
+        [Display(Name = "Birth Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public System.DateTime BirthDate { get; set; }

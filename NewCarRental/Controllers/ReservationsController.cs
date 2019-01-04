@@ -18,6 +18,8 @@ namespace NewCarRental.Controllers
         // GET: Reservations
         public ActionResult Index()
         {
+           
+            
             var reservations = db.Reservations.Include(r => r.Cars).Include(r => r.Customers);
             return View(reservations.ToList());
         }

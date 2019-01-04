@@ -16,19 +16,21 @@ namespace NewCarRental.Models.DAL
     public partial class Reservations
     {
         public int Id { get; set; }
-       
+
+        [Display(Name = "Select Car")]
         public int CarId { get; set; }
 
         [Display(Name = "Customer Name")]
         public int CustomerId { get; set; }
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [Display(Name = "Start Date")]
-        public System.DateTime DateFrom { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        public System.DateTime DateFrom { get; set; }
+
         [Display(Name = "End Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public System.DateTime DateTo { get; set; }
     
         public virtual Cars Cars { get; set; }
