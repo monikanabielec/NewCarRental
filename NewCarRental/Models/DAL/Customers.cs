@@ -23,13 +23,17 @@ namespace NewCarRental.Models.DAL
     
         public int Id { get; set; }
         public string Name { get; set; }
-        [Display(Name = "Surname")]
+
+        [Display(Name = "Surame")]
         public string LastName { get; set; }
-        [Display(Name = "Birth Date")]
+
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public System.DateTime BirthDate { get; set; }
+        [Required]
         public string Login { get; set; }
+        [DataType(DataType.Password)]
+        [Required]
         public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

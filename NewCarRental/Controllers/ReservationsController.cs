@@ -10,7 +10,7 @@ using NewCarRental.Helpers;
 using NewCarRental.Models.DAL;
 
 namespace NewCarRental.Controllers
-{   
+{
     public class ReservationsController : Controller
     {
         private CarRentalEntities db = new CarRentalEntities();
@@ -18,12 +18,17 @@ namespace NewCarRental.Controllers
         // GET: Reservations
         public ActionResult Index()
         {
-           
-            
-            var reservations = db.Reservations.Include(r => r.Cars).Include(r => r.Customers);
-            return View(reservations.ToList());
+            IQueryable<Reservations> reservations = null;
+            if (User.Identity.IsAuthenticated)
+                reservations = db.Reservations.Include(r => r.Cars).Include(r => r.Customers);
+            else if (UserHelper.User != null)
+                reservations = db.Reservations.Include(r => r.Cars).Include(r => r.Customers)
+                        .Where(a => a.CustomerId == UserHelper.User.Id);
+            if (reservations != null)
+                return View(reservations.ToList());
+            return View(new List<Reservations>());
         }
-      
+
         // GET: Reservations/Details/5
         public ActionResult Details(int? id)
         {
@@ -49,8 +54,8 @@ namespace NewCarRental.Controllers
         }
 
         // POST: Reservations/Create
-       
-      
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,CarId,CustomerId,DateFrom,DateTo")] Reservations reservations)
@@ -100,7 +105,7 @@ namespace NewCarRental.Controllers
         }
 
         // POST: Reservations/Edit/5
-   
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,CarId,CustomerId,DateFrom,DateTo")] Reservations reservations)

@@ -64,7 +64,7 @@ namespace NewCarRental.Controllers
         //
         // POST: /Account/Login
         [HttpPost]
-        [Authorize]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
@@ -136,7 +136,7 @@ namespace NewCarRental.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult Register()
         {
             return View();
@@ -145,7 +145,7 @@ namespace NewCarRental.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
