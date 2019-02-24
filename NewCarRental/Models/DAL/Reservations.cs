@@ -33,5 +33,7 @@ namespace NewCarRental.Models.DAL
     
         public virtual Cars Cars { get; set; }
         public virtual Customers Customers { get; set; }
+        public string Status { get; set; }
+        public string Reference { get; set; }
     }
 }
