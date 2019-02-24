@@ -34,7 +34,7 @@ namespace NewCarRentalUnitTests
               _existingReservation
             }.AsQueryable());
         }
-
+        //Reservation starts and finish before existing one
         [Test]
         public void BookingStartsAndFinishesBeforeAnExistingBooking_ReturnEmptyString()
         {
@@ -48,6 +48,7 @@ namespace NewCarRentalUnitTests
             NUnit.Framework.Assert.That(result, Is.Empty);
         }
 
+        //Reservation starts before and end during existing booking
         [Test]
         public void BookingStartsBeforeExistingBookingAndEndInBookingTime_ReturnRefString()
         {
@@ -61,6 +62,7 @@ namespace NewCarRentalUnitTests
             NUnit.Framework.Assert.AreEqual("ref1", result);
         }
 
+        //Reservation starts and ends during existing one
         [Test]
         public void BookingStartsInExistingBookingAndEndInBookingTime_ReturnRefString()
         {
@@ -74,6 +76,7 @@ namespace NewCarRentalUnitTests
             NUnit.Framework.Assert.AreEqual("ref1", result);
         }
 
+        //Reservation starts during bookig and ends after
         [Test]
         public void BookingStartsInExistingBookingAndEndAfterBookingTime_ReturnRefString()
         {
@@ -87,6 +90,7 @@ namespace NewCarRentalUnitTests
             NUnit.Framework.Assert.AreEqual("ref1", result);
         }
 
+        //Reservation starts and finish after existing one
         [Test]
         public void BookingStartsAndFinishesAfterAnExistingBooking_ReturnEmptyString()
         {
@@ -100,6 +104,7 @@ namespace NewCarRentalUnitTests
             NUnit.Framework.Assert.That(result, Is.Empty);
         }
 
+        //Reservation starts before and end afterexisting one
         [Test]
         public void BookingStartsBeforeExistingBookingAndFinishesAfterExistingBooking_ReturnRefString()
         {
