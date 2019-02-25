@@ -16,11 +16,11 @@ namespace NewCarRentalSeleniumTests
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
-        [FindsBy(How = How.Id, Using = "log")]
+        [FindsBy(How = How.Id, Using = "Login")]
         public IWebElement UserName { get; set; }
-        [FindsBy(How = How.Id, Using = "pwd")]
+        [FindsBy(How = How.Id, Using = "Password")]
         public IWebElement Password { get; set; }
-        [FindsBy(How = How.Id, Using = "login")]
+        [FindsBy(How = How.Id, Using = "btn btn-default")]
         public IWebElement Submit { get; set; }
     }
 }
