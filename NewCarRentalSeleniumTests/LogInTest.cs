@@ -15,7 +15,7 @@ namespace NewCarRentalSeleniumTests
         public void LoginTest()
         {
             // UWAGA!!! nalezy zmienic adres localhost'a !! 
-            _driver.Url = "http://localhost:50283/Login";
+            _driver.Url = "http://localhost:50283/";
             var homePage = new HomePage(_driver);
             homePage.MyAccount.Click();
             var loginPage = new LoginPage(_driver);
@@ -23,7 +23,7 @@ namespace NewCarRentalSeleniumTests
             loginPage.Password.SendKeys(_password);
             loginPage.Submit.Submit();
             Assert.IsTrue(homePage.HeaderText.Displayed);
-            Assert.AreEqual("Customers", homePage.HeaderText.Text);
+            Assert.AreEqual("Reservations", homePage.HeaderText.Text);
         }
     }
 }

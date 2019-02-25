@@ -20,7 +20,7 @@ namespace NewCarRentalSeleniumTests
         public IWebElement UserName { get; set; }
         [FindsBy(How = How.Id, Using = "Password")]
         public IWebElement Password { get; set; }
-        [FindsBy(How = How.Id, Using = "btn btn-default")]
+        [FindsBy(How = How.ClassName, Using = "btn-default")]
         public IWebElement Submit { get; set; }
     }
 }

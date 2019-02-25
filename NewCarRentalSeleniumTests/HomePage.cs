@@ -16,13 +16,13 @@ namespace NewCarRentalSeleniumTests
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
-        [FindsBy(How = How.Id, Using = "login")]
+        [FindsBy(How = How.XPath, Using = ".//a[text()= 'Log in']")]
         public IWebElement MyAccount { get; set; }
-        [FindsBy(How = How.CssSelector, Using = ".navbar")]
+        [FindsBy(How = How.CssSelector, Using = "h2")]
         public IWebElement HeaderText { get; set; }
-        public void GoToPage()
-        {
-            driver.Navigate().GoToUrl("https://google.pl");
-        }
+        //public void GoToPage()
+        //{
+        //    driver.Navigate().GoToUrl("https://google.pl");
+        //}
     }
 }
