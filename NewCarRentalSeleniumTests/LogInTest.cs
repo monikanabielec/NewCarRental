@@ -23,7 +23,7 @@ namespace NewCarRentalSeleniumTests
             loginPage.Password.SendKeys(_password);
             loginPage.Submit.Submit();
             Assert.IsTrue(homePage.HeaderText.Displayed);
-            Assert.AreEqual("Your Account", homePage.HeaderText.Text);
+            Assert.AreEqual("Customers", homePage.HeaderText.Text);
         }
     }
 }

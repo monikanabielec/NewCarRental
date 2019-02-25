@@ -8,7 +8,7 @@ using SeleniumExtras.PageObjects;
 
 namespace NewCarRentalSeleniumTests
 {
-     public class HomePage
+    public class HomePage
     {
         private IWebDriver driver;
         public HomePage(IWebDriver driver)
@@ -16,9 +16,9 @@ namespace NewCarRentalSeleniumTests
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
-        [FindsBy(How = How.Id, Using = "account")]
+        [FindsBy(How = How.Id, Using = "login")]
         public IWebElement MyAccount { get; set; }
-        [FindsBy(How = How.CssSelector, Using = ".entry-title")]
+        [FindsBy(How = How.CssSelector, Using = ".navbar")]
         public IWebElement HeaderText { get; set; }
         public void GoToPage()
         {
